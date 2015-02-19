@@ -39,8 +39,18 @@ var gems = [
 
 var app = angular.module("gemStore", []);
 
-app.controller("GemStoreController", function(){
+app.controller("StoreController", function(){
     this.products = gems;
+});
+
+app.controller("PanelController", function(){
+    this.tab = 1;
+    this.selectTab = function(tab) {
+        this.tab = tab;
+    };
+    this.isTabSelected = function(tab) {
+        return this.tab == tab;
+    };
 });
 
 
