@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<!-- ng-app: Angular runs the store module when the document loads -->
+<html ng-app="gemStore">
+  <head>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+  </head>
+
+  <!-- ng-controller: attach a controller to an HTML element -->
+  <body ng-controller="GemStoreController as store">
+    <script type="text/javascript" src="./js/angular.min.js"></script>
+    <script type="text/javascript" src="./js/app.js"></script>
+
+    <div class="list-group">
+      <!-- ng-repeat: add multiple instances of an HTML element -->
+      <!-- Order by "price" ascending: -->
+      <div class="list-group-item" ng-repeat="product in store.products | orderBy:'product.price'">
+      
+        <!-- ng-hide: hide the HTML element if condition is true -->
+        <div ng-hide="product.soldOut">
+          <h1>{{product.name}}</h1>
+          <p>{{product.description}}</p>
+          
+          <div class="gallery">
+
+            <!-- ng-src: Use this for img elements -->
+            <img ng-src="{{product.images[0].thumb}}"/>
+          </div>
+          
+          <!-- Filters: {{data | filter:options}} -->
+          <!-- Angular has all kinds of ready made filters -->
+          <!-- "currency" is a filter for formatting prices --->
+          <h2>{{product.price | currency}}</h2>
+          
+          <!-- ng-show: show the HTML element if condition is true -->
+          <button ng-show="product.canPurchase">Buy</button>
+          <p ng-hide="product.canPurchase">You cannot buy this item.</p>
+
+          <!-- ng-init: initialize variables for the current HTML element -->
+          <section ng-init="tab = 1">
+            <ul class="nav nav-pills">
+            
+              <!-- ng-click: Execute expression when clicked -->
+              <!--   Create tab variable in controller -->
+              <!-- ng-class: Set/unset class of HTML element to the ones in the given object -->
+              <!--   Set the class to "active" if it's value is true -->
+              <li ng-class="{ active : tab === 1 }">
+                <a href ng-click="tab = 1">Description</a>
+              </li>
+              <li ng-class="{ active : tab === 2 }">
+                <a href ng-click="tab = 2">Specifications</a>
+              </li>
+              <li ng-class="{ active : tab === 3 }">
+                <a href ng-click="tab = 3">Reviews</a>
+              </li>
+            </ul>
+            
+            <!--  Automatic binding to "tab" variable in the controller -->
+            <div class="panel" ng-show="tab === 1">
+              <h4>Description</h4>
+              <p>{{product.description}}</p>
+            </div>
+            <div class="panel" ng-show="tab === 2">
+              <h4>Specification</h4>
+              <blockquote>Not yet</blockquote>
+            </div>
+            <div class="panel" ng-show="tab === 3">
+              <h4>Reviews</h4>
+              <blockquote>Not yet</blockquote>
+            </div>
+
+          </section>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
