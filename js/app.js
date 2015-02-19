@@ -16,6 +16,18 @@ var gems = [
                     full : "./images/dodeca-02-full.jpg",
                     thumb : "./images/dodeca-02-thumb.jpg"
                 }
+            ],
+            reviews : [
+                {
+                    stars : 5,
+                    body : "Very best dodeca gem",
+                    author : "joe@usa.com"
+                },
+                {
+                    stars : 2,
+                    body : "Not so best. Had better yesterday.",
+                    author : "jack@mail.in"
+                }
             ]
         },
         {
@@ -32,6 +44,13 @@ var gems = [
                 {
                     full : "./images/penta-02-full.jpg",
                     thumb : "./images/penta-02-thumb.jpg"
+                }
+            ],
+            reviews : [
+                {
+                    stars : 4,
+                    body : "Almost as good as the other",
+                    author : "susan@epost.org"
                 }
             ]
         }
