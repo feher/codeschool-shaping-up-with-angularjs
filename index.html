@@ -19,23 +19,23 @@
       
         <!-- ng-hide: hide the HTML element if condition is true -->
         <div ng-hide="product.soldOut">
-          <h1>{{product.name}}</h1>
-          <p>{{product.description}}</p>
+          <!-- Filters: {{data | filter:options}} -->
+          <!-- Angular has all kinds of ready made filters -->
+          <!-- "currency" is a filter for formatting prices --->
+          <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
           
-          <div class="gallery">
+          <div class="img-wrap">
 
             <!-- ng-src: Use this for img elements -->
             <img ng-src="{{product.images[0].thumb}}"/>
           </div>
           
-          <!-- Filters: {{data | filter:options}} -->
-          <!-- Angular has all kinds of ready made filters -->
-          <!-- "currency" is a filter for formatting prices --->
-          <h2>{{product.price | currency}}</h2>
           
           <!-- ng-show: show the HTML element if condition is true -->
-          <button ng-show="product.canPurchase">Buy</button>
-          <p ng-hide="product.canPurchase">You cannot buy this item.</p>
+          <button class="btn btn-primary pull-right"
+                  ng-show="product.canPurchase">Buy</button>
+          <p ng-hide="product.canPurchase"
+             class="pull-right">You cannot buy this item.</p>
 
           <!-- ng-init: initialize variables for the current HTML element -->
           <section ng-controller="PanelController as panel">
@@ -90,21 +90,29 @@
                 </blockquote>
                 <!-- ng-model: binds the form element value to the property -->
                 <!--   Bind the value of select to review.stars in the controller -->
-                <select required
-                        ng-model="reviewController.review.stars"
-                        ng-options="stars for stars in [5, 4, 3, 2, 1]">
-                </select>
-                <br/>
-                <textarea required
-                          placeholder="Write your review here"
-                          ng-model="reviewController.review.body"></textarea>
-                <br/>
-                <input required
-                       type="email" placeholder="john@mail.com"
-                       ng-model="reviewController.review.author"/>
-                <br/>
-                <input type="submit" value="Submit" />
-                <br/>
+                <fieldset class="form-group">
+                  <select required
+                          class="form-control"
+                          ng-model="reviewController.review.stars"
+                          ng-options="stars for stars in [5, 4, 3, 2, 1]">
+                  </select>
+                </fieldset> 
+                <fieldset class="form-group">
+                  <textarea required
+                            class="form-control"
+                            placeholder="Write your review here"
+                            ng-model="reviewController.review.body"></textarea>
+                </fieldset>
+                <fieldset class="form-group">
+                  <input required
+                         class="form-control"
+                         type="email" placeholder="john@mail.com"
+                         ng-model="reviewController.review.author"/>
+                </fieldset>
+                <fieldset class="form-group">
+                  <input type="submit" value="Submit"
+                         class="btn btn-primary pull-right"/>
+                </fieldset>
                 <div>Reviewform is {{reviewForm.$valid}}</div>
               </form>
               
