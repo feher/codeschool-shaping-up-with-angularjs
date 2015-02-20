@@ -79,21 +79,6 @@ app.directive('productTitle', function(){
         templateUrl : 'product-title.html' // URL of a template
     };
 });
-
-app.directive('productTitle2', function(){
-    return {
-        restrict : 'E', // This is an HTML element
-        template : '<h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>'
-    };
-});
-
-app.directive('productTitle3', function(){
-    return {
-        restrict : 'A', // This is an HTML attribute
-        template : '{{product.name}} <em class="pull-right">{{product.price | currency}}</em>'
-    };
-});
-
 app.directive('productPanels', function(){
     return {
         restrict : 'E', // This is an HTML attribute
