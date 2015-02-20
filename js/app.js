@@ -97,4 +97,11 @@ app.directive('productTitle2', function(){
     };
 });
 
+app.directive('productTitle3', function(){
+    return {
+        restrict : 'A', // This is an HTML attribute
+        template : '{{product.name}} <em class="pull-right">{{product.price | currency}}</em>'
+    };
+});
+
 })();
