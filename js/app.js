@@ -72,5 +72,14 @@ app.controller("PanelController", function(){
     };
 });
 
+app.controller("ReviewController", function(){
+    this.newReview = {
+        stars : 5
+    };
+    this.addReview = function(product) {
+        product.reviews.push(this.newReview);
+        this.newReview = {};
+    };
+});
 
 })();

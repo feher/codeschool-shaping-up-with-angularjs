@@ -60,38 +60,45 @@
               <h4>Description</h4>
               <p>{{product.description}}</p>
             </div>
-            <div class="panel" ng-show="panel.isTabSelected(2)">
+            
+            <div class="panel"
+                 ng-show="panel.isTabSelected(2)">
               <h4>Specification</h4>
               <blockquote>Not yet</blockquote>
             </div>
-            <div class="panel" ng-show="panel.isTabSelected(3)">
+            
+            <div class="panel"
+                 ng-show="panel.isTabSelected(3)">
               <h4>Reviews</h4>
+              
               <blockquote ng-repeat="review in product.reviews">
                 <b>Stars : {{review.stars}}</b>
                 {{review.body}}
                 <cite>{{review.author}}</cite>
               </blockquote>
-              <form name="newReviewForm">
+              
+              <form name="newReviewForm"
+                    ng-controller="ReviewController as reviewController"
+                    ng-submit="reviewController.addReview(product)">
                 <blockquote>
                   <!-- newReview is assumed to be in the controller (i.e. panel) -->
-                  <b>Stars : {{newReview.stars}}</b>
-                  {{newReview.body}}
-                  <cite>{{newReview.author}}</cite>
+                  <b>Stars : {{reviewController.newReview.stars}}</b>
+                  {{reviewController.newReview.body}}
+                  <cite>{{reviewController.newReview.author}}</cite>
                 </blockquote>
                 <!-- ng-model: binds the form element value to the property -->
                 <!--   Bind the value of select to newReview.stars in the controller -->
-                <select ng-model="newReview.stars">
-                  <option value="1">1 stars</option>
-                  <option value="2">2 stars</option>
-                  <option value="3">3 stars</option>
-                  <option value="4">4 stars</option>
-                  <option value="5">5 stars</option>
+                <select ng-model="reviewController.newReview.stars"
+                        ng-options="stars for stars in [5, 4, 3, 2, 1]">
                 </select>
-                <textarea ng-model="newReview.body"></textarea>
+                <textarea placeholder="Write your review here"
+                          ng-model="reviewController.newReview.body"></textarea>
                 <label>by:</label>
-                <input type="email" ng-model="newReview.author"/>
+                <input type="email" placeholder="john@mail.com"
+                       ng-model="reviewController.newReview.author"/>
                 <input type="submit" value="Submit" />
               </form>
+              
             </div>
 
           </section>
