@@ -19,10 +19,13 @@
       
         <!-- ng-hide: hide the HTML element if condition is true -->
         <div ng-hide="product.soldOut">
-          <!-- Filters: {{data | filter:options}} -->
-          <!-- Angular has all kinds of ready made filters -->
-          <!-- "currency" is a filter for formatting prices --->
-          <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
+
+          <!-- ng-include: includes external HTML files in the element -->
+          <!--   Quote from https://docs.angularjs.org/api/ng/directive/ngInclude :
+                   "For example, ngInclude won't work for cross-domain requests
+                    on all browsers and for file:// access on some browsers."
+           -->
+          <h3 ng-include="'product-title.html'"></h3>
           
           <div class="img-wrap">
 
