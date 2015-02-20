@@ -104,4 +104,12 @@ app.directive('productTitle3', function(){
     };
 });
 
+app.directive('productPanels', function(){
+    return {
+        restrict : 'E', // This is an HTML attribute
+        templateUrl : 'product-panels.html'
+    };
+});
+
+
 })();
