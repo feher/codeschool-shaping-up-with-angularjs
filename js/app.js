@@ -62,16 +62,6 @@ app.controller("StoreController", function(){
     this.products = gems;
 });
 
-app.controller("PanelController", function(){
-    this.tab = 1;
-    this.selectTab = function(tab) {
-        this.tab = tab;
-    };
-    this.isTabSelected = function(tab) {
-        return this.tab == tab;
-    };
-});
-
 app.controller("ReviewController", function(){
     this.review = {
         stars : 5
@@ -107,7 +97,17 @@ app.directive('productTitle3', function(){
 app.directive('productPanels', function(){
     return {
         restrict : 'E', // This is an HTML attribute
-        templateUrl : 'product-panels.html'
+        templateUrl : 'product-panels.html',
+        controller: function(){ // We bind this controller to the product-panels HTML element
+            this.tab = 1;
+            this.selectTab = function(tab) {
+                this.tab = tab;
+            };
+            this.isTabSelected = function(tab) {
+                return this.tab == tab;
+            };
+        },
+        controllerAs: 'panel' // We want to refer to the controller as "panel" in product-panels.html
     };
 });
 
