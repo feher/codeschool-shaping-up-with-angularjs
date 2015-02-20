@@ -75,7 +75,7 @@
               <blockquote ng-repeat="review in product.reviews">
                 <b>Stars : {{review.stars}}</b>
                 {{review.body}}
-                <cite>{{review.author}}</cite>
+                <cite>-{{review.author}} on {{review.createdOn | date}}</cite>
               </blockquote>
               
               <form name="reviewForm"
@@ -86,7 +86,7 @@
                   <!-- review is assumed to be in the controller (i.e. panel) -->
                   <b>Stars : {{reviewController.review.stars}}</b>
                   {{reviewController.review.body}}
-                  <cite>{{reviewController.review.author}}</cite>
+                  <cite>-{{reviewController.review.author}}</cite>
                 </blockquote>
                 <!-- ng-model: binds the form element value to the property -->
                 <!--   Bind the value of select to review.stars in the controller -->
