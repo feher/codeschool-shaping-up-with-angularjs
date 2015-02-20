@@ -4,6 +4,7 @@
 <html ng-app="gemStore">
   <head>
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
   </head>
 
   <!-- ng-controller: attach a controller to an HTML element -->
@@ -77,26 +78,34 @@
                 <cite>{{review.author}}</cite>
               </blockquote>
               
-              <form name="newReviewForm"
+              <form name="reviewForm"
+                    novalidate
                     ng-controller="ReviewController as reviewController"
-                    ng-submit="reviewController.addReview(product)">
+                    ng-submit="reviewForm.$valid && reviewController.addReview(product)">
                 <blockquote>
-                  <!-- newReview is assumed to be in the controller (i.e. panel) -->
-                  <b>Stars : {{reviewController.newReview.stars}}</b>
-                  {{reviewController.newReview.body}}
-                  <cite>{{reviewController.newReview.author}}</cite>
+                  <!-- review is assumed to be in the controller (i.e. panel) -->
+                  <b>Stars : {{reviewController.review.stars}}</b>
+                  {{reviewController.review.body}}
+                  <cite>{{reviewController.review.author}}</cite>
                 </blockquote>
                 <!-- ng-model: binds the form element value to the property -->
-                <!--   Bind the value of select to newReview.stars in the controller -->
-                <select ng-model="reviewController.newReview.stars"
+                <!--   Bind the value of select to review.stars in the controller -->
+                <select required
+                        ng-model="reviewController.review.stars"
                         ng-options="stars for stars in [5, 4, 3, 2, 1]">
                 </select>
-                <textarea placeholder="Write your review here"
-                          ng-model="reviewController.newReview.body"></textarea>
-                <label>by:</label>
-                <input type="email" placeholder="john@mail.com"
-                       ng-model="reviewController.newReview.author"/>
+                <br/>
+                <textarea required
+                          placeholder="Write your review here"
+                          ng-model="reviewController.review.body"></textarea>
+                <br/>
+                <input required
+                       type="email" placeholder="john@mail.com"
+                       ng-model="reviewController.review.author"/>
+                <br/>
                 <input type="submit" value="Submit" />
+                <br/>
+                <div>Reviewform is {{reviewForm.$valid}}</div>
               </form>
               
             </div>

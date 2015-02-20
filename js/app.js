@@ -73,12 +73,12 @@ app.controller("PanelController", function(){
 });
 
 app.controller("ReviewController", function(){
-    this.newReview = {
+    this.review = {
         stars : 5
     };
     this.addReview = function(product) {
-        product.reviews.push(this.newReview);
-        this.newReview = {};
+        product.reviews.push(this.review);
+        this.review = {};
     };
 });
 
