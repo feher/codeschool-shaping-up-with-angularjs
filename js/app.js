@@ -83,4 +83,11 @@ app.controller("ReviewController", function(){
     };
 });
 
+app.directive('productTitle', function(){
+    return {
+        restrict : 'E', // This is an HTML element
+        templateUrl : 'product-title.html' // URL of a template
+    };
+});
+
 })();
